@@ -43,6 +43,16 @@ class bird(object):
         # If the config is wrong an exception would be raised.
         return True
 
+    def configure(self, file=None):
+        command = "configure"
+        if file:
+            command += f' "{file}"'
+
+        if self.configure_check(file):
+            self.command(command)
+        # If reconfiguration fails an exception would be raised.
+        return True
+
     def command(self, command):
         """
         Use this if you want to send a direct command.
